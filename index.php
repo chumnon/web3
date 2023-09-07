@@ -10,7 +10,7 @@
     <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid"
+    <div class="container-fluid">
         <div class= "row bar">
             <div class="offset-md-4 offset-2 col-md-2 col-4">
                 <div class="optionStyle">
@@ -46,27 +46,33 @@
         ?>
         <div class="container-fluid liste-jet">
             <div class="row ligne-jet">
-        <?php
-        if ($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                ?>
-                    <div class="card unJet">
-                        <img class="card-img-top" src="<?php echo $row['img'] ?>" alt="Card image" style="width:100%"/>
-                        <div class="card-body">
-                            <h4 class="card-title"><?php echo $row['nom']?></h4>
-                            <p class="card-text">
-                                <?php echo $row['pays']?><br>
-                                <?php echo $row['role']?><br>
-                            </p>
+            <?php
+            if ($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    ?>
+                        <div class="card unJet">
+                            <img class="card-img-top" src="<?php echo $row['img'] ?>" alt="Card image" style="width:100%"/>
+                            <div class="card-body">
+                                <h4 class="card-title"><?php echo $row['nom']?></h4>
+                                <p class="card-text">
+                                    <?php echo $row['pays']?><br>
+                                    <?php echo $row['role']?><br>
+                                </p>
+                                <a href="">modifier</a>
+                            </div>
                         </div>
-                    </div>
-                <?php
+                    <?php
+                }
+            } else {
+                echo "0 results";
             }
-        } else {
-            echo "0 results";
-        }
-        ?>
-        </div>
+            ?>
+            </div>
+            <div class="row lienAjouter">
+                <div class="col-4 offset-4">
+                    <a href="php/ajouter.php" class="btAjouter">ajouter un avion</a>    
+                </div>
+            </div>   
         </div>
         <?php
         $conn->close()

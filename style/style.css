@@ -1,24 +1,18 @@
-.bar{
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 30px;
-    width: 100%;
-}
-.optionStyle{
+.btAjouter{
     background-color: rgb(23, 113, 197);
     border: solid rgb(141, 141, 141) 3px;
     border-radius: 20px;
 }
 
-.optionStyle:hover{
+.btAjouter:hover{
     background-color: white;
 }
 
-.optionStyle:hover .optionBar{
+.btAjouter:hover .optionBar{
     color:rgb(23, 113, 197);
 }
 
-.optionBar{
+.btAjouter{
     color:white;
     font-size: larger;
     font-weight: bolder;
@@ -27,7 +21,7 @@
 }
 
 @media(min-width: 0px) and (max-width: 1200px){
-    .optionBar{
+    .btAjouter{
         font-size: smaller;
     }
 }
