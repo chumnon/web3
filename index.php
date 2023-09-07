@@ -10,21 +10,6 @@
     <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class= "row bar">
-            <div class="offset-md-4 offset-2 col-md-2 col-4">
-                <div class="optionStyle">
-                    <a class="optionBar">Ajouter</a>
-                </div>
-            </div>
-
-            <div class="col-md-2 col-4" >
-                <div class="optionStyle">
-                    <a class="optionBar">Modifier</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php
         $servername = "localhost";
         $username = "root";
@@ -58,7 +43,7 @@
                                     <?php echo $row['pays']?><br>
                                     <?php echo $row['role']?><br>
                                 </p>
-                                <a href="">modifier</a>
+                                <a href="php/modifier.php/<?php echo $row['id']?>" class="modifier">modifier</a>
                             </div>
                         </div>
                     <?php
@@ -67,12 +52,22 @@
                 echo "0 results";
             }
             ?>
-            </div>
-            <div class="row lienAjouter">
-                <div class="col-4 offset-4">
-                    <a href="php/ajouter.php" class="btAjouter">ajouter un avion</a>    
+            </div>  
+        </div>
+        <div class="container-fluid">
+            <div class= "row bar">
+                <div class="offset-md-4 offset-2 col-md-2 col-4">
+                    <div class="optionStyle">
+                        <a class="optionBar" href="php/ajouter.php">Ajouter</a>
+                    </div>
                 </div>
-            </div>   
+
+                <div class="col-md-2 col-4" >
+                    <div class="optionStyle">
+                        <a class="optionBar" href="php/supprimer.php">Supprimer</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php
         $conn->close()

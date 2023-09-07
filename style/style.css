@@ -1,18 +1,29 @@
-.btAjouter{
+@font-face{
+    src:url(../font/Aeronaves_PERSONAL_USE_ONLY.ttf);
+    font-family: avion;
+}
+
+.bar{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+.optionStyle{
     background-color: rgb(23, 113, 197);
     border: solid rgb(141, 141, 141) 3px;
     border-radius: 20px;
 }
 
-.btAjouter:hover{
+.optionStyle:hover{
     background-color: white;
 }
 
-.btAjouter:hover .optionBar{
+.optionStyle:hover .optionBar{
     color:rgb(23, 113, 197);
 }
 
-.btAjouter{
+.optionBar{
     color:white;
     font-size: larger;
     font-weight: bolder;
@@ -21,7 +32,7 @@
 }
 
 @media(min-width: 0px) and (max-width: 1200px){
-    .btAjouter{
+    .optionBar{
         font-size: smaller;
     }
 }
@@ -44,4 +55,8 @@
     background-size: cover;
     border: rgb(141, 141, 141) 2px;
     border-radius: 8px;
+}
+
+.card-title .card-text .modifier{
+    font-family: avion;
 }
