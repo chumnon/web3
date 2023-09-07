@@ -43,7 +43,7 @@
                                     <?php echo $row['pays']?><br>
                                     <?php echo $row['role']?><br>
                                 </p>
-                                <a href="php/modifier.php/<?php echo $row['id']?>" class="modifier">modifier</a>
+                                <a href="php/modifier.php?id=<?php echo $row['id']?>" class="modifier">modifier</a>
                             </div>
                         </div>
                     <?php

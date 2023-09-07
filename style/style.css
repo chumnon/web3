@@ -1,5 +1,5 @@
 @font-face{
-    src:url(../font/Aeronaves_PERSONAL_USE_ONLY.ttf);
+    src:url(../font/Air\ Americana.ttf);
     font-family: avion;
 }
 
@@ -57,6 +57,29 @@
     border-radius: 8px;
 }
 
-.card-title .card-text .modifier{
+.card-title{
     font-family: avion;
+    color: darkgrey;
+    font-size: 50px;
+    text-shadow: -1px -1px yellow;
+}
+
+.card-text{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.modifier{
+    font-family: avion;
+    color: yellow;
+    font-size: 20px;
+    padding: 3px;
+    border: solid rgba(233, 220, 100, 0.418) 2px;
+    border-radius: 10px;
+    background-color:rgba(233, 220, 100, 0.418) ;
+}
+
+.modifier:hover{
+    background-color:rgba(233, 220, 100, 0.795) ;
+    color: darkgray;
 }
