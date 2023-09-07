@@ -10,7 +10,7 @@
     <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid"
         <div class= "row bar">
             <div class="offset-md-4 offset-2 col-md-2 col-4">
                 <div class="optionStyle">
