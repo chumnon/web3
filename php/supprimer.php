@@ -46,6 +46,7 @@
             }
         }
 
+            
         if ($_SERVER['REQUEST_METHOD'] != "POST" || $erreur == true){
             ?>
                 <div class="container-fluid" style="text-align:center">
@@ -61,8 +62,9 @@
                     </div>
                 </div>
             <?php
-        } else {
+        } else{
             $row = $Nom->fetch_assoc();
+            $supprimer = true
             ?>
                 <div class="container-fluid liste-jet">
                     <div class="row ligne-jet">
@@ -77,9 +79,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row confirmZone">
+                        <div class="col-md-4 offset-md-4">
+                            <h1 class="confirm">Êtes vous sûr de vouloir supprimer ce jet?</h1>
+                            <a class = "confirmY" href="../php/kaboom.php?id=<?php echo $_POST['id']?>">oui</a>
+                            <a class = "confirmN" href="../index.php">non</a>
+                        </div>
+                    </div>
                 </div>
             <?php
-        }
+        } 
         $conn->close();
     ?>
 

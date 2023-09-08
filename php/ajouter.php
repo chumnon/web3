@@ -112,6 +112,7 @@
             } else {
                 ?>
                 <h1><?php echo "Error: " . $envoye . "<br>" . $conn->error; ?></h1>
+                <a class="optionBar" href="../index.php">Liste des avions</a>
                 <?php
             }
         }
