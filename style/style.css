@@ -85,22 +85,24 @@
 }
 
 .confirmZone{
-    background-image: url(../img/dangerBG.webp);
+    background-image: url(../img/dangerBG.jpg);
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .confirm{
     color: rgb(223, 25, 18);
     text-shadow: -2px 1px rgb(243, 119, 4);
+    padding-bottom: 20px;
 }
 
 .confirmY{
     color: yellow;
     font-size: larger;
     background-color: rgb(156, 19, 19);
-    padding: 14px;
-    padding-left: 17px;
-    padding-right: 17px;
+    padding: 15px;
     border: 2px rgb(97, 6, 6);
+    text-decoration: none;
 }
 
 .confirmY:hover{

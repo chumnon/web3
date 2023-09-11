@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +11,16 @@
     <title>Index</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
     <?php
+    if($_SESSION["connexion"] != true){
+        ?>
+        <h1>Vous n'êtes pas connecté</h1>
+        <a href="connection.php">Page de connection</a>
+        <?php
+    } else {
         $servername = "localhost";
         $username = "root";
         $password = "root";
@@ -82,14 +92,15 @@
                     <div class="row confirmZone">
                         <div class="col-md-4 offset-md-4">
                             <h1 class="confirm">Êtes vous sûr de vouloir supprimer ce jet?</h1>
-                            <a class = "confirmY" href="../php/kaboom.php?id=<?php echo $_POST['id']?>">oui</a>
-                            <a class = "confirmN" href="../index.php">non</a>
+                            <a class = "confirmY" href="kaboom.php?id=<?php echo $row['id']?>">oui</a>
+                            <a class = "confirmN" href="index.php">non</a>
                         </div>
                     </div>
                 </div>
             <?php
         } 
         $conn->close();
+    }
     ?>
 
         

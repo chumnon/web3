@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +11,16 @@
     <title>Index</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
 </head>
 <body>
     <?php
+    if($_SESSION["connexion"] != true){
+        ?>
+        <h1>Vous n'êtes pas connecté</h1>
+        <a href="connection.php">Page de connection</a>
+        <?php
+    } else {
         $servername = "localhost";
         $username = "root";
         $password = "root";
@@ -87,7 +97,7 @@
                 </div>
             <?php
         } else {
-            $envoye = "INSERT INTO jet (id, nom, pays, role, img) VALUES (NULL, '" . $nom . "', '" . $pays . "', '" . $role . "', '" . $img . "');";
+            $envoye = "INSERT INTO jet (nom, pays, role, img) VALUES ('" . $nom . "', '" . $pays . "', '" . $role . "', '" . $img . "');";
             if ($conn->query($envoye) === TRUE) {
                 ?>
                     <div class="container-fluid" style="text-align:center">
@@ -97,13 +107,13 @@
                         <div class= "row bar">
                             <div class="offset-md-4 offset-2 col-md-2 col-4">
                                 <div class="optionStyle">
-                                    <a class="optionBar" href="../index.php">Liste des avions</a>
+                                    <a class="optionBar" href="index.php">Liste des avions</a>
                                 </div>
                             </div>
         
                             <div class="col-md-2 col-4" >
                                 <div class="optionStyle">
-                                    <a class="optionBar" href="../php/ajouter.php">Ajouter un autre avion</a>
+                                    <a class="optionBar" href="ajouter.php">Ajouter un autre avion</a>
                                 </div>
                             </div>
                         </div>
@@ -126,6 +136,7 @@
         }
 
         $conn->close();
+    }
     ?>   
 
 </body>

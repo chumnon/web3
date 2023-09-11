@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,69 +15,85 @@
 </head>
 <body>
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $db = "avion";
-
-        //Connection
-        $conn = new mysqli($servername, $username,$password,$db);
-
-        //Verrification
-        if ($conn ->connect_error){
-            die("Erreur de connection: " . $conn->connect_error);
-        }
-
-        $conn->query('SET NAMES utf8');
-        $sql = "SELECT id, nom, pays, role, img FROM jet";
-        $result = $conn->query($sql);
-
-        ?>
-        <div class="container-fluid liste-jet">
-            <div class="row ligne-jet">
+        if($_SESSION["connexion"] != true){
+            ?>
+            <h1>Vous n'êtes pas connecté</h1>
+            <a href="connection.php">Page de connection</a>
             <?php
-            if ($result->num_rows > 0){
-                while($row = $result->fetch_assoc()){
-                    ?>
-                        <div class="card unJet">
-                            <img class="card-img-top" src="<?php echo $row['img'] ?>" alt="Card image" style="width:100%"/>
-                            <div class="card-body">
-                                <h4 class="card-title"><?php echo $row['nom']?></h4>
-                                <p class="card-text">
-                                    <?php echo $row['pays']?><br>
-                                    <?php echo $row['role']?><br>
-                                </p>
-                                <a href="php/modifier.php?id=<?php echo $row['id']?>" class="modifier">modifier</a>
+        } else {
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+            $db = "avion";
+
+            //Connection
+            $conn = new mysqli($servername, $username,$password,$db);
+
+            //Verrification
+            if ($conn ->connect_error){
+                die("Erreur de connection: " . $conn->connect_error);
+            }
+
+            $conn->query('SET NAMES utf8');
+            $sql = "SELECT id, nom, pays, role, img FROM jet";
+            $utilisateur = "SELECT id, pseudo, email, mdp, droit FROM utilisateur";
+            $result = $conn->query($sql);
+            $predroit = $conn->query($utilisateur);
+            $droit = $predroit->fetch_assoc();
+            ?>
+            <div class="container-fluid liste-jet">
+                <div class="row ligne-jet">
+                <?php
+                if ($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        ?>
+                            <div class="card unJet">
+                                <img class="card-img-top" src="<?php echo $row['img'] ?>" alt="Card image" style="width:100%"/>
+                                <div class="card-body">
+                                    <h4 class="card-title"><?php echo $row['nom']?></h4>
+                                    <p class="card-text">
+                                        <?php echo $row['pays']?><br>
+                                        <?php echo $row['role']?><br>
+                                    </p>
+                                    <?php
+                                        if($droit["droit"] === "admin"){
+                                            ?>
+                                            <a href="modifier.php?id=<?php echo $row['id']?>" class="modifier">modifier</a>
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                } else {
+                    echo "0 results";
+                }
+                ?>
+                </div>  
+            </div>
+            <?php
+                if($droit["droit"] === "admin"){
+                ?>
+                    <div class="container-fluid">
+                        <div class= "row bar">
+                            <div class="offset-md-4 offset-2 col-md-2 col-4">
+                                <div class="optionStyle">
+                                    <a class="optionBar" href="ajouter.php">Ajouter</a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 col-4" >
+                                <div class="optionStyle">
+                                    <a class="optionBar" href="supprimer.php">Supprimer</a>
+                                </div>
                             </div>
                         </div>
-                    <?php
+                    </div>
+                <?php
                 }
-            } else {
-                echo "0 results";
-            }
-            ?>
-            </div>  
-        </div>
-        <div class="container-fluid">
-            <div class= "row bar">
-                <div class="offset-md-4 offset-2 col-md-2 col-4">
-                    <div class="optionStyle">
-                        <a class="optionBar" href="php/ajouter.php">Ajouter</a>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-4" >
-                    <div class="optionStyle">
-                        <a class="optionBar" href="php/supprimer.php">Supprimer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php
-        $conn->close()
+        $conn->close();
+        }
     ?>
-
-        
-
 </body>
 </html>
