@@ -73,14 +73,10 @@ session_start();
                         <div class="row" style="text-align:left">
                             <div class="offset-md-5 ">
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                                    Nom : <input type="text" name="nom" maxLength="40" value="<?php echo $nom;?>"><br>
-                                    <p style="color:red;"><?php echo $nomErreur; ?></p>
-                                    Pays : <input type="text" name="pays" maxLength="25" value="<?php echo $pays;?>"><br>
-                                    <p style="color:red;"><?php echo $paysErreur; ?></p>
-                                    Rôle : <input type="text" name="role" maxLength="25" value="<?php echo $role;?>"><br>
-                                    <p style="color:red;"><?php echo $roleErreur; ?></p>
-                                    Image : <input type="text" name="img" value="<?php echo $img;?>"><br>
-                                    <p style="color:red;"><?php echo $imgErreur; ?></p>
+                                    Utilisateur (nom/email) : </br> <input type="text" name="nom" maxLength="40" value="<?php echo $pseudo;?>"><br>
+                                    <p style="color:red;"><?php echo $userErreur; ?></p>
+                                    Mots de passe : </br> <input type="text" name="pays" maxLength="25"><br>
+                                    <p style="color:red;"><?php echo $mdpErreur; ?></p>
                                     <input type="submit">
                                 </form>
                             </div>
